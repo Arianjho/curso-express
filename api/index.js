@@ -29,17 +29,13 @@ const corsOptions = {
 app.use(cors(corsOptions));
 
 const swaggerOptions = {
+  openapi: '3.0.0',
   definition: {
     info: {
       title: 'API Catalogo de Productos',
       version: '1.0.0',
       description: 'Una simple API para un catalogo de productos'
-    },
-    servers: [
-      {
-        url: `http://localhost:${port}`
-      }
-    ]
+    }
   },
   apis: ['./routes/*.js']
 };
