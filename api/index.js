@@ -42,14 +42,14 @@ const swaggerOptions = {
       version: '1.0.0',
       description: 'Una simple API para un catalogo de productos'
     },
-    basePath: '/api',
+    basePath: '/.',
     servers: [
       {
-        url: 'https://curso-express-production.up.railway.app/api/v1'
+        url: `http://localhost:${port}`
       }
     ]
   },
-  apis: ['./*.js']
+  apis: ['./routes/*.js']
 };
 
 const swaggerDocs = swaggerJsDoc(swaggerOptions);
