@@ -1,0 +1,42 @@
+{
+  "openapi": "3.0.3",
+  "info": {
+    "title": "API Rest Catalogo de productos",
+    "version": "1.0.0",
+    "description": "Esta es una API Rest para un catalogo de productos, donde se pueden realizar operaciones CRUD sobre los productos.",
+    "contact": {
+      "name": "Arian Josafat Hidalgo Ordoñez",
+      "url": "https://www.linkedin.com/in/arian-josafat-hidalgo-ordo%C3%B1ez-00a44418a/"
+    }
+  },
+  "servers": [
+    {
+      "url": "http://localhost:3000/api/v1"
+    },
+    {
+      "url": "https://curso-express-production.up.railway.app/"
+    }
+  ],
+  "tags": [
+    {
+      "name": "Productos",
+      "description": "Listado de productos con @faker-js/faker"
+    }
+  ],
+  "paths": {
+    "/products": {
+      "get": {
+        "tags": [
+          "Productos"
+        ],
+        "summary": "Recuperar una lista de productos",
+        "description": "Recuperar una lista de productos",
+        "responses": {
+          "200": {
+            "description": "successful operation"
+          }
+        }
+      }
+    }
+  }
+}

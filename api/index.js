@@ -3,7 +3,7 @@ const morgan = require('morgan');
 const cors = require('cors');
 
 const swaggerUi = require('swagger-ui-express');
-const swaggerJsDoc = require('swagger-jsdoc');
+const swaggerSpec = require('./swagger/config');
 const app = express();
 const { routerApi } = require('./routes');
 
@@ -16,7 +16,7 @@ app.use(express.json());
 app.use(morgan(':method :url :status - :response-time ms'));
 
 // Esto es para permitir peticiones de otros dominios en especifico
-const whitelist = ['http://localhost:8080', 'https://myapp.com'];
+const whitelist = ['http://localhost:3000'];
 const corsOptions = {
   origin: (origin, callback) => {
     if (whitelist.includes(origin) || !origin) {
@@ -34,26 +34,7 @@ app.get('/', (req, res) => {
 
 routerApi(app);
 
-const swaggerOptions = {
-  openapi: '3.0.0',
-  definition: {
-    info: {
-      title: 'API Catalogo de Productos',
-      version: '1.0.0',
-      description: 'Una simple API para un catalogo de productos'
-    },
-    basePath: '/.',
-    servers: [
-      {
-        url: `http://localhost:${port}`
-      }
-    ]
-  },
-  apis: ['./routes/*.js']
-};
-
-const swaggerDocs = swaggerJsDoc(swaggerOptions);
-app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerDocs, { explorer: true }));
+app.use('/docs', swaggerUi.serve, swaggerUi.setup(swaggerSpec));
 
 app.use(logErrors);
 app.use(boomErrorHandler);
