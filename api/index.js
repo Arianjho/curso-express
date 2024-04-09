@@ -38,7 +38,7 @@ const swaggerOptions = {
     },
     servers: [
       {
-        url: 'https://curso-express-production.up.railway.app/api/'
+        url: 'https://curso-express-production.up.railway.app/'
       }
     ]
   },
@@ -46,9 +46,9 @@ const swaggerOptions = {
 };
 
 const swaggerDocs = swaggerJsDoc(swaggerOptions);
-app.use('/api/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerDocs));
+app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerDocs));
 
-app.get('/api', (req, res) => {
+app.get('/', (req, res) => {
   res.send('Hola mi server en express');
 });
 
