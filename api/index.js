@@ -31,13 +31,13 @@ app.use(cors(corsOptions));
 const swaggerOptions = {
   definition: {
     info: {
-      title: 'Ecommerce API',
+      title: 'API Catalogo de Productos',
       version: '1.0.0',
-      description: 'A simple Express Library API'
+      description: 'Una simple API para un catalogo de productos'
     },
     servers: [
       {
-        url: 'http://localhost:3000'
+        url: `http://localhost:${port}`
       }
     ]
   },
