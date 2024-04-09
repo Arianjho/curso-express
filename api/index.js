@@ -28,6 +28,12 @@ const corsOptions = {
 };
 app.use(cors(corsOptions));
 
+app.get('/', (req, res) => {
+  res.send('Hola mi server en express');
+});
+
+routerApi(app);
+
 const swaggerOptions = {
   openapi: '3.0.0',
   definition: {
@@ -42,17 +48,11 @@ const swaggerOptions = {
       }
     ]
   },
-  apis: ['./routes/*.js']
+  apis: ['./*.js']
 };
 
 const swaggerDocs = swaggerJsDoc(swaggerOptions);
 app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerDocs, { explorer: true }));
-
-app.get('/', (req, res) => {
-  res.send('Hola mi server en express');
-});
-
-routerApi(app);
 
 app.use(logErrors);
 app.use(boomErrorHandler);
