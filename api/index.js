@@ -9,7 +9,7 @@ const { routerApi } = require('./routes');
 
 const { logErrors, errorHandler, boomErrorHandler } = require('./middlewares/error.handler');
 
-const port = 3000;
+const port = process.env.PORT || 3000;
 
 app.use(express.json());
 // app.use(morgan(':method :url :status :res[content-length] - :response-time ms'));
@@ -45,9 +45,9 @@ const swaggerOptions = {
 };
 
 const swaggerDocs = swaggerJsDoc(swaggerOptions);
-app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerDocs));
+app.use('/api/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerDocs));
 
-app.get('/', (req, res) => {
+app.get('/api', (req, res) => {
   res.send('Hola mi server en express');
 });
 
