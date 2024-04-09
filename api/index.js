@@ -35,7 +35,12 @@ const swaggerOptions = {
       title: 'API Catalogo de Productos',
       version: '1.0.0',
       description: 'Una simple API para un catalogo de productos'
-    }
+    },
+    servers: [
+      {
+        url: 'https://curso-express-production.up.railway.app/api/'
+      }
+    ]
   },
   apis: ['./routes/*.js']
 };
